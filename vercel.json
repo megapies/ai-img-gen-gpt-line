@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/webhook.js", "use": "@vercel/node" },
+    { "src": "api/worker.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/webhook", "dest": "/api/webhook.js" },
+    { "src": "/worker", "dest": "/api/worker.js" }
+  ],
+  "crons": [
+    {
+      "path": "/worker",
+      "schedule": "*/1 * * * *"
+    }
+  ]
+}
